@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96BB65CF-CB20-4706-83CF-A432D47464E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OFoods</RootNamespace>
+    <AssemblyName>OFoods</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy, Version=4.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy.4.4.0\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\App.cs" />
+    <Compile Include="Application\AppInitEventArgs.cs" />
+    <Compile Include="Application\AppRuntime.cs" />
+    <Compile Include="Application\IApp.cs" />
+    <Compile Include="Bus\IBus.cs" />
+    <Compile Include="Bus\ICommandBus.cs" />
+    <Compile Include="Bus\IEventBus.cs" />
+    <Compile Include="Caching\CacheBase.cs" />
+    <Compile Include="Caching\CacheLevel.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Caching\Evaluator.cs" />
+    <Compile Include="Caching\ExpressionCacheKeyGenerator.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheKeyGenerator.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Caching\InternalCacher.cs" />
+    <Compile Include="Caching\LocalCollectionExpressionVisitor.cs" />
+    <Compile Include="Caching\RuntimeMemoryCache.cs" />
+    <Compile Include="Caching\RuntimeMemoryCacheProvider.cs" />
+    <Compile Include="Caching\StringCacheKeyGenerator.cs" />
+    <Compile Include="CombHelper.cs" />
+    <Compile Include="Configurations\AppConfigSource.cs" />
+    <Compile Include="Configurations\ConfigException.cs" />
+    <Compile Include="Configurations\Elements\ApplicationElement.cs" />
+    <Compile Include="Configurations\Elements\EventSerializerElement.cs" />
+    <Compile Include="Configurations\Elements\ExceptionElement.cs" />
+    <Compile Include="Configurations\Elements\ExceptionElementCollection.cs" />
+    <Compile Include="Configurations\Elements\ExceptionHandlerElement.cs" />
+    <Compile Include="Configurations\Elements\ExceptionHandlerElementCollection.cs" />
+    <Compile Include="Configurations\Elements\GeneratorElement.cs" />
+    <Compile Include="Configurations\Elements\HandlerElement.cs" />
+    <Compile Include="Configurations\Elements\HandlerKind.cs" />
+    <Compile Include="Configurations\Elements\IdentityGeneratorElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptContractElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptContractElementCollection.cs" />
+    <Compile Include="Configurations\Elements\InterceptionElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptMethodElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptMethodElementCollection.cs" />
+    <Compile Include="Configurations\Elements\InterceptorElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptorElementCollection.cs" />
+    <Compile Include="Configurations\Elements\InterceptorRefElement.cs" />
+    <Compile Include="Configurations\Elements\InterceptorRefElementCollection.cs" />
+    <Compile Include="Configurations\Elements\ObjectContainerElement.cs" />
+    <Compile Include="Configurations\Elements\SequenceGeneratorElement.cs" />
+    <Compile Include="Configurations\Elements\SerializerElement.cs" />
+    <Compile Include="Configurations\Elements\SnapshotSerializerElement.cs" />
+    <Compile Include="Configurations\Fluent\ApplicationConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\ConfigSourceConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\Configurator.cs" />
+    <Compile Include="Configurations\Fluent\ExceptionHandlerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\Extensions.cs" />
+    <Compile Include="Configurations\Fluent\HandlerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IApplicationConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IConfigSourceConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IdentityGeneratorConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IExceptionHandlerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IHandlerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IIdentityGeneratorConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IInterceptionConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\ILoggingConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\InterceptionConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IObjectContainerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\IOFoodConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\ISequenceGeneratorConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\ObjectContainerConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\OFoodConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\SequenceGeneratorConfigurator.cs" />
+    <Compile Include="Configurations\Fluent\TypeSpecifiedConfigSourceConfigurator.cs" />
+    <Compile Include="Configurations\IConfigSource.cs" />
+    <Compile Include="Configurations\OFoodsConfig.cs" />
+    <Compile Include="Configurations\OFoodsConfigSection.cs" />
+    <Compile Include="Configurations\RegularConfigSource.cs" />
+    <Compile Include="Dependency\IDependency.cs" />
+    <Compile Include="Dependency\IIocRegistrar.cs" />
+    <Compile Include="Dependency\IIocResolver.cs" />
+    <Compile Include="Dependency\IObjectContainer.cs" />
+    <Compile Include="Dependency\IocResolver.cs" />
+    <Compile Include="Dependency\IScopeDependency.cs" />
+    <Compile Include="Dependency\ISingletonDependency.cs" />
+    <Compile Include="Dependency\ITransientDependency.cs" />
+    <Compile Include="Dependency\LifetimeStyle.cs" />
+    <Compile Include="Dependency\ObjectContainer.cs" />
+    <Compile Include="Dependency\ScopeDependencyTypeFinder.cs" />
+    <Compile Include="Dependency\SingtonDependencyTypeFinder.cs" />
+    <Compile Include="Dependency\TransientDependencyTypeFinder.cs" />
+    <Compile Include="DisposableObject.cs" />
+    <Compile Include="Domain\AggregateCacheInfo.cs" />
+    <Compile Include="Domain\AggregateRoot.cs" />
+    <Compile Include="Domain\DTO\EntityDto.cs" />
+    <Compile Include="Domain\DTO\IEntityDto.cs" />
+    <Compile Include="Domain\DTO\IListResult.cs" />
+    <Compile Include="Domain\DTO\NameValueDto.cs" />
+    <Compile Include="Domain\DTO\NullableIdDto.cs" />
+    <Compile Include="Domain\DTO\NullableIdInput.cs" />
+    <Compile Include="Domain\Entities\EntityBase.cs" />
+    <Compile Include="Domain\Entities\IEntity.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\IAudited.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\ICreatedAudited.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\ICreatedTime.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\IExpirable.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\ILockable.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\IRecyclable.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\ITimestamp.cs" />
+    <Compile Include="Domain\Entities\Infrastructure\IUpdateAutited.cs" />
+    <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Domain\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Repositories\IRepositoryContext.cs" />
+    <Compile Include="Domain\Repositories\Repository.cs" />
+    <Compile Include="Domain\Repositories\RepositoryContext.cs" />
+    <Compile Include="Domain\Repositories\RepositoryException.cs" />
+    <Compile Include="Domain\Services\DomainService.cs" />
+    <Compile Include="Domain\Services\IDomainService.cs" />
+    <Compile Include="Domain\Utils.cs" />
+    <Compile Include="Events\DomainEvent.cs" />
+    <Compile Include="Events\HandlesAttribute.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IDomainEventHandler.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="Events\IHandler.cs" />
+    <Compile Include="Events\ParallelExecutionAttribute.cs" />
+    <Compile Include="Exceptions\ExceptionHandler.cs" />
+    <Compile Include="Exceptions\ExceptionHelper.cs" />
+    <Compile Include="Exceptions\ExceptionManager.cs" />
+    <Compile Include="Exceptions\ExceptionMessage.cs" />
+    <Compile Include="Exceptions\IExceptionHandler.cs" />
+    <Compile Include="Generators\IdentityGenerator.cs" />
+    <Compile Include="Generators\IIdentityGenerator.cs" />
+    <Compile Include="Generators\ISequenceGenerator.cs" />
+    <Compile Include="Generators\SequenceGenerator.cs" />
+    <Compile Include="Generators\SequentialIdentityGenerator.cs" />
+    <Compile Include="Interception\AdditionalInterfaceToProxyAttribute.cs" />
+    <Compile Include="Interception\BaseTypeForInterfaceProxyAttribute.cs" />
+    <Compile Include="Interception\ExceptionHandlingInterceptor.cs" />
+    <Compile Include="Interception\InterceptorSelector.cs" />
+    <Compile Include="Logging\ILoggerAdapter.cs" />
+    <Compile Include="Logging\InternalLogger.cs" />
+    <Compile Include="Logging\LogBase.cs" />
+    <Compile Include="Logging\LoggerAdapterBase.cs" />
+    <Compile Include="Logging\LogManager.cs" />
+    <Compile Include="NameValue.cs" />
+    <Compile Include="OFoodException.cs" />
+    <Compile Include="Domain\IUnitOfWork.cs" />
+    <Compile Include="Logging\EmptyLogger.cs" />
+    <Compile Include="Logging\EmptyLoggerFactory.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILoggerFactory.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="PagedResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reflection\DirectoryAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAllAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAssemblyFinder.cs" />
+    <Compile Include="Reflection\IFinder.cs" />
+    <Compile Include="Reflection\IMethodInfoFinder.cs" />
+    <Compile Include="Reflection\ITypeFinder.cs" />
+    <Compile Include="Scheduling\IScheduleService.cs" />
+    <Compile Include="Scheduling\LimitedConcurrencyLevelTaskScheduler.cs" />
+    <Compile Include="Scheduling\ScheduleService.cs" />
+    <Compile Include="Scheduling\Worker.cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Specifications\AndNotSpecification.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\AnySpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecification.cs" />
+    <Compile Include="Specifications\ExpressionFuncExtender.cs" />
+    <Compile Include="Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Specifications\ICompositeSpecification.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\ISpecificationParser.cs" />
+    <Compile Include="Specifications\NoneSpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\ParameterRebinder.cs" />
+    <Compile Include="Specifications\SortOrder.cs" />
+    <Compile Include="Specifications\Specification.cs" />
+    <Compile Include="Specifications\SpecificationException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OFoods.Utility\OFoods.Utility.csproj">
+      <Project>{557b0d51-f4ed-47d2-a584-2c40e28f75e6}</Project>
+      <Name>OFoods.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
